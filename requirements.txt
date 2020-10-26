@@ -1,0 +1,6 @@
+django
+djangorestframework
+djoser
+black
+flake8
+psycopg2-binary
