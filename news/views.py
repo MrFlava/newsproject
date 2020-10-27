@@ -1,8 +1,8 @@
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import (CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView)
 
-from news.serializers import PostSerializer, CommentSerializer
-from news.models import Post, Comment
+from news.serializers import PostSerializer, CommentSerializer, UpvoteSerializer
+from news.models import Post, Comment, Upvote
 
 # Create your views here.
 
@@ -58,3 +58,13 @@ class CommentListView(ListAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
 
+
+class UpvoteView(CreateAPIView):
+
+    queryset = Upvote.objects.all()
+    serializer_class = UpvoteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        serializer.save(user=user)

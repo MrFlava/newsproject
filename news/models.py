@@ -29,3 +29,16 @@ class Comment(models.Model):
         return f"{self.content} published at {self.published}"
 
     objects = models.Manager()
+
+
+class Upvote(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,  blank=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user} voted for {self.post} post"
+
+    class Meta:
+        unique_together = ("user", "post")
+
+    objects = models.Manager()
