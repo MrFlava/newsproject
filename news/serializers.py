@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.shortcuts import  get_object_or_404
+from django.shortcuts import get_object_or_404
 
 from news.models import Post, Comment, Upvote
 
@@ -19,6 +19,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class UpvoteSerializer(serializers.ModelSerializer):
+    voted = serializers.PrimaryKeyRelatedField(default=serializers.CurrentUserDefault(), read_only=True)
 
     class Meta:
         model = Upvote

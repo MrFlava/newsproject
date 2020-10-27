@@ -32,13 +32,13 @@ class Comment(models.Model):
 
 
 class Upvote(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,  blank=True)
+    voted = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,  blank=True, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user} voted for {self.post} post"
+        return f"{self.voted} voted for {self.post} post"
 
     class Meta:
-        unique_together = ("user", "post")
+        unique_together = ("voted", "post")
 
     objects = models.Manager()
