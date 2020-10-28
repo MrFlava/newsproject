@@ -1,9 +1,12 @@
 import datetime
 
 from django.db import models
+from timeloop import Timeloop
 from django.contrib.auth import get_user_model
 
 # Create your models here.
+
+tl = Timeloop()
 
 
 class Post(models.Model):
@@ -18,13 +21,10 @@ class Post(models.Model):
 
     objects = models.Manager()
 
+    @tl.job(interval=datetime.timedelta(days=1))
     def __init__(self, *args, **kwargs):
         super(Post, self).__init__(*args, **kwargs)
-        self.date_published = self.published
-        self.date_now = datetime.datetime.date(datetime.datetime.now())
-
-        if self.date_now - datetime.timedelta(days=1) >= datetime.datetime.date(self.date_published):
-            self.upvotes_amount = 0
+        self.upvotes_amount = 0
 
 
 class Comment(models.Model):
