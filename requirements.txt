@@ -4,4 +4,4 @@ djoser
 black
 flake8
 psycopg2-binary
-timeloop
+django-crontab
