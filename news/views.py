@@ -1,5 +1,10 @@
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.generics import (CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView)
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    UpdateAPIView,
+    DestroyAPIView,
+)
 
 from news.serializers import PostSerializer, CommentSerializer, UpvoteSerializer
 from news.models import Post, Comment, Upvote
