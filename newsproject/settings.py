@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "djoser",
     "news",
+    "django_crontab",
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "newsproject.wsgi.application"
 
+CRONJOBS = [
+    ('* /2 * * 3 *', 'news.cronjob.reset_upvotes_count')
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
