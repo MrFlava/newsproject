@@ -21,10 +21,10 @@ class Post(models.Model):
     def __init__(self, *args, **kwargs):
         super(Post, self).__init__(*args, **kwargs)
         self.date_published = self.published
-        self.date_now = datetime.datetime.now()
-        if self.date_now - datetime.timedelta(days=1) == self.date_published:
+        self.date_now = datetime.datetime.date(datetime.datetime.now())
+
+        if self.date_now - datetime.timedelta(days=1) >= datetime.datetime.date(self.date_published):
             self.upvotes_amount = 0
-            super(Post, self).save(*args, **kwargs)
 
 
 class Comment(models.Model):
