@@ -5,3 +5,4 @@ black
 flake8
 psycopg2-binary
 django-crontab
+django-filter

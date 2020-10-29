@@ -1,0 +1,17 @@
+# Ignore everything
+**
+
+# Allow folders
+!news/**
+!newsproject/**
+
+# Allow files
+!manage.py
+!requirements.txt
+!Dockerfile
+
+# Ignore files
+**/local_settings.py
+
+#Ignore folders
+**/__pycache__/
