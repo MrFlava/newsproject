@@ -6,8 +6,8 @@ from rest_framework.generics import (
     DestroyAPIView,
 )
 
-from news.serializers import PostSerializer, CommentSerializer, UpvoteSerializer
-from news.models import Post, Comment, Upvote
+from .serializers import PostSerializer, CommentSerializer, UpvoteSerializer
+from .models import Post, Comment, Upvote
 
 # Create your views here.
 
