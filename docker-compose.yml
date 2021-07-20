@@ -1,22 +1,47 @@
-version: '3.7'
+version: '3'
 
 services:
-  news_db:
-    image: postgres:10.1-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-
-
-  news_web:
+  web:
     build: .
-    command: bash -c "python /newsproject/manage.py migrate --noinput &&
-             python /newsproject/manage.py runserver 0.0.0.0:8000"
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/newsproject
     ports:
-       - 8000:8000
+      - "8000:8000"
     depends_on:
-      - news_db
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=news_project
+      - DB_USER=postgres
+      - DB_PASSWORD=112323
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
 
-volumes:
-      postgres_data:
+    environment:
+      - POSTGRES_DB=news_project
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=112323
+
+
+#  news_db:
+#    image: postgres:10.1-alpine
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data/
+#
+#
+#  news_web:
+#    build: .
+#    command: bash -c "python /newsproject/manage.py migrate --noinput &&
+#             python /newsproject/manage.py runserver 0.0.0.0:8000"
+#    volumes:
+#      - .:/newsproject
+#    ports:
+#       - 8000:8000
+#    depends_on:
+#      - news_db
+#
+#volumes:
+#      postgres_data:
