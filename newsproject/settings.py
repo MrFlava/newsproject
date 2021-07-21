@@ -27,7 +27,7 @@ SECRET_KEY = "79i4tjh)y4b&h#*@xxb38g50l7*kkx)h7d)mwz(c=642rq_31="
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0',  '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0',  '127.0.0.1', 'blooming-brook-72592.herokuapp.com']
 
 
 # Application definition
