@@ -86,10 +86,10 @@ CRONJOBS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        "NAME": "news_project",
-        "USER": "postgres",
-        "PASSWORD": "112323",
-        "HOST": "localhost",
+        "NAME": "d6eaap93vbih99",
+        "USER": "agedtrmwnddcft",
+        "PASSWORD": "76ee6c4272d521afad8b247759c43282e32d36c2406240f6f5d05874bbeee702",
+        "HOST": "ec2-18-235-4-83.compute-1.amazonaws.com",
         "PORT": "5432",
 
     }
