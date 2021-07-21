@@ -5,8 +5,6 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 
-# tl = Timeloop()
-
 
 class Post(models.Model):
     title = models.CharField(max_length=120)
